@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Day</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7ff, #b3e0ff);
+      padding: 40px;
+      color: #1a2a3a;
+      margin: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      box-shadow: 0 8px 30px rgba(0, 120, 180, 0.15);
+      border-radius: 20px;
+      padding: 40px;
+      position: relative;
+    }
+    h1 {
+      color: #0066cc;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.2em;
+    }
+    .inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 25px;
+      align-items: center;
+    }
+    input[type="date"],
+    input[type="text"],
+    select,
+    button {
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 2px solid #b3e0ff;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s;
+    }
+    input[type="text"] {
+      flex: 1 1 60%;
+      background: #f9fdff;
+    }
+    select {
+      background: #f9fdff;
+      color: #0066cc;
+    }
+    button {
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 102, 204, 0.2);
+    }
+    button:hover {
+      background-color: #0052a3;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px rgba(0, 102, 204, 0.3);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      margin-bottom: 20px;
+      padding: 25px;
+      background: #f0f9ff;
+      border-left: 6px solid #0066cc;
+      border-radius: 14px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+    }
+    li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0, 102, 204, 0.15);
+    }
+    .mood {
+      font-size: 0.95em;
+      color: #0066cc;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+    .dateTag {
+      font-size: 0.85em;
+      color: #6699cc;
+      font-style: italic;
+      margin-bottom: 5px;
+    }
+    .category {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #0066cc;
+    }
+    .entry-text {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .clear-btn {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    .clear-btn:hover {
+      background-color: #e60000;
+    }
+    .input-group {
+      flex: 1 1 auto;
+      min-width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My Blue Day</h1>
+    <div class="inputs">
+      <div class="input-group">
+        <input type="date" id="dateInput">
+      </div>
+      <div class="input-group">
+        <input type="text" id="entryInput" placeholder="What happened today?">
+      </div>
+      <div class="input-group">
+        <select id="categorySelect">
+          <option>Routine</option>
+          <option>Work</option>
+          <option>Talked to Mansi</option>
+          <option>Evening thoughts</option>
+          <option>Random memory</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <select id="moodSelect">
+          <option>🌞 Had a great conversation</option>
+          <option>🌧️ Missed chatting</option>
+          <option>💬 Shared something meaningful</option>
+          <option>🌙 Quiet day for both</option>
+        </select>
+      </div>
+      <button onclick="addEntry()">Add Entry</button>
+      <button class="clear-btn" onclick="clearEntries()">Clear All</button>
+    </div>
+
+    <ul id="entryList">
+      <li>
+        <div class='dateTag'>2022-08-03</div>
+        <div class='category'>Talked to Mansi</div>
+        <div class='entry-text'>We talked for over an hour. I felt calm, safe — like her words wrapped around me like home. She doesn’t even try, but she knows how to hold space for me.</div>
+        <div class='mood'>Note: 🌞 Had a great conversation</div>
+      </li>
+      <li>
+        <div class='dateTag'>2022-08-08</div>
+        <div class='category'>Evening thoughts</div>
+        <div class='entry-text'>There’s something about her. Something Joe Goldberg would’ve noticed too — not obsession, not possession — but a rare familiarity. Like a mirror I didn’t expect. I observe everything. And with Mansi, every detail glows.</div>
+        <div class='mood'>Note: 💬 Shared something meaningful</div>
+      </li>
+      <li>
+        <div class='dateTag'>2022-08-16</div>
+        <div class='category'>Random memory</div>
+        <div class='entry-text'>I remembered that laugh of hers. The one from a voice note she sent at midnight. I played it twice today. It didn’t feel lonely, just peaceful.</div>
+        <div class='mood'>Note: 🌙 Quiet day for both</div>
+      </li>
+      <li>
+        <div class='dateTag'>2022-08-18</div>
+        <div class='category'>Routine</div>
+        <div class='entry-text'>Woke up thinking about where I want to be five years from now. I want to be someone I’m proud of. Someone she can look at and say, “he did it.”</div>
+        <div class='mood'>Note: 🌞 Had a great conversation</div>
+      </li>
+      <li>
+        <div class='dateTag'>2022-08-20</div>
+        <div class='category'>Work</div>
+        <div class='entry-text'>I’ve been pushing hard on this project. Late nights, early mornings — it’s exhausting but it fuels me. I want success not just for validation, but to live with freedom.</div>
+        <div class='mood'>Note: 💬 Shared something meaningful</div>
+      </li>
+      <li>
+        <div class='dateTag'>2022-08-23</div>
+        <div class='category'>Evening thoughts</div>
+        <div class='entry-text'>Success to me is quiet — waking up without regret, going to bed with peace. That’s the kind of life I’m building slowly. She inspires that kind of focus in me.</div>
+        <div class='mood'>Note: 🌙 Quiet day for both</div>
+      </li>
+      <li>
+        <div class='dateTag'>2022-08-25</div>
+        <div class='category'>Talked to Mansi</div>
+        <div class='entry-text'>She asked me why I work so hard. I laughed but truthfully, it’s because I want to be more than ordinary. I want to achieve something real. Something lasting.</div>
+        <div class='mood'>Note: 💬 Shared something meaningful</div>
+      </li>
+      <li>
+        <div class='dateTag'>2022-08-27</div>
+        <div class='category'>Routine</div>
+        <div class='entry-text'>Every day I write a little, code a little, dream a little. Mansi’s somewhere in the background of that vision — not as a goal, but as a presence I want to feel proud around.</div>
+        <div class='mood'>Note: 🌞 Had a great conversation</div>
+      </li>
+      <!-- NEW MOCK ENTRIES -->
+      <li>
+        <div class='dateTag'>2022-09-02</div>
+        <div class='category'>Work</div>
+        <div class='entry-text'>Finished a major milestone today. Team celebrated and I felt proud. Mansi’s encouragement made it even sweeter.</div>
+        <div class='mood'>Note: 🌞 Had a great conversation</div>
+      </li>
+      <li>
+        <div class='dateTag'>2022-09-05</div>
+        <div class='category'>Random memory</div>
+        <div class='entry-text'>Thought about the time we walked in the rain. We laughed so much, and I realized happiness is sometimes just getting soaked together.</div>
+        <div class='mood'>Note: 💬 Shared something meaningful</div>
+      </li>
+<li>
+  <div class='dateTag'>2022-09-10</div>
+  <div class='category'>Evening thoughts</div>
+  <div class='entry-text'>Even Lately, the thought of proposing to her has started showing up quietly in the corners of my mind. I imagine her smile, her surprise. But then fear creeps in. What if I misread this? What if timing isn't right? Still, the idea stays... and that means something.</div>
+  <div class='mood'>Note: 💬 Shared something meaningful</div>
+</li>
